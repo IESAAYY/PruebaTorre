@@ -12,23 +12,23 @@ public class Posicion {
 	
 	//Constructor
 	public Posicion(int fila, char columna) {
-		setfila(fila);
-		setcolumna(columna);
+		setFila(fila);
+		setColumna(columna);
 	}
 
 	//Constructor copia
 	public Posicion(Posicion Posicion) {
-		this.fila = Posicion.getfila();
-		this.columna = Posicion.getcolumna();
+		this.fila = Posicion.getFila();
+		this.columna = Posicion.getColumna();
 	}
 
 	// Métodos get y set para fila y columna con excepciones indicadas por el
 		// enunciado en sus respectivos lugares
-		public int getfila() {
+		public int getFila() {
 			return fila;
 		}
 	
-	public void setfila(int fila) {
+	private void setFila(int fila) {
 		if (fila < 1 || fila > 8) {
 			throw new IllegalArgumentException("Mensaje error: Debe ser entero entre 1 y 8");
 		} else {
@@ -36,11 +36,11 @@ public class Posicion {
 		}
 	}
 
-	public char getcolumna() {
+	public char getColumna() {
 		return columna;
 	}
 
-	public void setcolumna(char columna) {
+	private void setColumna(char columna) {
 		if (columna < 'a' || columna > 'h') {
 			throw new IllegalArgumentException("Mensaje rror: Deber ser del alfabeto entre a y h");
 
