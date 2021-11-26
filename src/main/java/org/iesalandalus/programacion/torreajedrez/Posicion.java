@@ -3,34 +3,41 @@ package org.iesalandalus.programacion.torreajedrez;
 public class Posicion {
 	
 	//Declaración de variable privates
-	private int filas;
-	private char columnas;
+	private int fila;
+	private char columna;
 	
-	//Métodos get y set para filas y columnas con expeciones indicadas por el enunciado en sus respectivos lugares
-	public int getFilas() {
-		return filas;
+	//Métodos get y set para fila y columna con expeciones indicadas por el enunciado en sus respectivos lugares
+	public int getfila() {
+		return fila;
 	}
 
-	public void setFilas(int filas) {
-		if (filas < 1 || filas > 8) {
-			throw new IllegalArgumentException("Debe ser entero entre 1 y 8");
+	public Posicion(int fila, char columna) {
+		setfila(fila);
+		setcolumna(columna);
+	}
+	
+	
+	
+	public void setfila(int fila) {
+		if (fila < 1 || fila > 8) {
+			throw new IllegalArgumentException("Mensaje error: Debe ser entero entre 1 y 8");
 		} else {
-			this.filas = filas;
+			this.fila = fila;
 		}
 	}
 
-	public char getColumnas() {
-		return columnas;
+	public char getcolumna() {
+		return columna;
 	}
 
-	public void setColumnas(char columnas) {
-		if (columnas < 'a' || columnas > 'h') {
-			throw new IllegalArgumentException("Deber ser del alfabeto entre a y h");
+	public void setcolumna(char columna) {
+		if (columna < 'a' || columna > 'h') {
+			throw new IllegalArgumentException("Mensaje rror: Deber ser del alfabeto entre a y h");
 
 		} else {
 
-			this.columnas = columnas;
+			this.columna = columna;
 		}
 	}
-
+	
 }
