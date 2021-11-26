@@ -1,23 +1,29 @@
 package org.iesalandalus.programacion.torreajedrez;
 
 public class Posicion {
-	
-	//Declaración de variable privates
+
+	// Declaración de variable privates
 	private int fila;
 	private char columna;
-	
-	//Métodos get y set para fila y columna con expeciones indicadas por el enunciado en sus respectivos lugares
+
+	// Métodos get y set para fila y columna con expeciones indicadas por el
+	// enunciado en sus respectivos lugares
 	public int getfila() {
 		return fila;
 	}
-
+	
+	//Constructor
 	public Posicion(int fila, char columna) {
 		setfila(fila);
 		setcolumna(columna);
 	}
-	
-	
-	
+
+	//Constructor copia
+	public Posicion(Posicion Posicion) {
+		this.fila = Posicion.getfila();
+		this.columna = Posicion.getcolumna();
+	}
+
 	public void setfila(int fila) {
 		if (fila < 1 || fila > 8) {
 			throw new IllegalArgumentException("Mensaje error: Debe ser entero entre 1 y 8");
@@ -39,5 +45,5 @@ public class Posicion {
 			this.columna = columna;
 		}
 	}
-	
+
 }
