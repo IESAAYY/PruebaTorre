@@ -8,11 +8,7 @@ public class Posicion {
 	private int fila;
 	private char columna;
 
-	// Métodos get y set para fila y columna con expeciones indicadas por el
-	// enunciado en sus respectivos lugares
-	public int getfila() {
-		return fila;
-	}
+	
 	
 	//Constructor
 	public Posicion(int fila, char columna) {
@@ -26,6 +22,12 @@ public class Posicion {
 		this.columna = Posicion.getcolumna();
 	}
 
+	// Métodos get y set para fila y columna con excepciones indicadas por el
+		// enunciado en sus respectivos lugares
+		public int getfila() {
+			return fila;
+		}
+	
 	public void setfila(int fila) {
 		if (fila < 1 || fila > 8) {
 			throw new IllegalArgumentException("Mensaje error: Debe ser entero entre 1 y 8");
@@ -65,6 +67,8 @@ public class Posicion {
 		return columna == other.columna && fila == other.fila;
 	}
 	
-	
-
+	//Método toString 
+	public String toString() {
+		return "Fila seleccionada: "+fila+"   Columna seleccionada: "+columna;
+	}
 }
