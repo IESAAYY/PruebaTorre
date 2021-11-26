@@ -10,7 +10,15 @@ public class Torre {
 	public Torre() {
 		atributoColor = Color.NEGRO;
 		atributoPosicion = new Posicion(8, 'h');
-
+	}
+	
+	public Torre(Color parametroColor) {
+		if (parametroColor==Color.BLANCO) {
+			atributoPosicion=new Posicion(1, 'h');
+		}
+		if (parametroColor==Color.NEGRO) {
+			atributoPosicion=new Posicion(8, 'h');
+		}
 	}
 
 	// Métrodos get y set
