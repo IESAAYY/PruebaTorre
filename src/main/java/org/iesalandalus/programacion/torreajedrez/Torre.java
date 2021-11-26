@@ -1,15 +1,23 @@
 package org.iesalandalus.programacion.torreajedrez;
 
 public class Torre {
-	
-	//Declaración de atributos de clase como privados
-	private Color atributoColor;
-	private Posicion Posicion;
 
+	// Declaración de atributos de clase como privados
+	private Color atributoColor;
+	private Posicion atributoPosicion;
+
+	// Constructor
+	public Torre() {
+		atributoColor = Color.NEGRO;
+		atributoPosicion = new Posicion(8, 'h');
+
+	}
+
+	// Métrodos get y set
 	public Color getColor() {
 		return atributoColor;
 	}
-	
+
 	private void setColor(Color sColor) {
 		if (sColor != null) {
 			atributoColor = sColor;
@@ -20,12 +28,12 @@ public class Torre {
 	}
 
 	public Posicion getPosicion() {
-		return Posicion;
+		return atributoPosicion;
 	}
 
-	private void setPosicion(Posicion posicion) {
-		if (posicion != null) {
-			Posicion = posicion;
+	private void setPosicion(Posicion sPosicion) {
+		if (sPosicion != null) {
+			atributoPosicion = sPosicion;
 		} else {
 			throw new NullPointerException("Mensaje error: Deberías de haber introducido una posición.");
 		}
