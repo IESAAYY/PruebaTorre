@@ -11,13 +11,27 @@ public class Torre {
 		atributoColor = Color.NEGRO;
 		atributoPosicion = new Posicion(8, 'h');
 	}
-	
+
 	public Torre(Color parametroColor) {
-		if (parametroColor==Color.BLANCO) {
-			atributoPosicion=new Posicion(1, 'h');
+		if (parametroColor == Color.BLANCO) {
+			atributoPosicion = new Posicion(1, 'h');
 		}
-		if (parametroColor==Color.NEGRO) {
-			atributoPosicion=new Posicion(8, 'h');
+		if (parametroColor == Color.NEGRO) {
+			atributoPosicion = new Posicion(8, 'h');
+		}
+	}
+
+	public Torre(Color parametroColor, char colInicial) {
+		setColor(parametroColor);
+
+		if (colInicial == 'a' || colInicial == 'h') {
+			if (parametroColor == Color.BLANCO) {
+				atributoPosicion = new Posicion(1, colInicial);
+			} else {
+				atributoPosicion = new Posicion(8, colInicial);
+			}
+		} else {
+			throw new IllegalArgumentException("Mensaje error: Deberías de haber introducido a ó h");
 		}
 	}
 
