@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.torreajedrez;
 
+import javax.naming.OperationNotSupportedException;
+
 public class Torre {
 
 	// Declaración de atributos de clase como privados
@@ -44,7 +46,7 @@ public class Torre {
 		if (sColor != null) {
 			atributoColor = sColor;
 		} else {
-			throw new NullPointerException("Mensaje error: Deberías de haber introducido un color.");
+			throw new NullPointerException("Mensaje error: Deberías de haber introducido un color válido.");
 		}
 
 	}
@@ -57,8 +59,72 @@ public class Torre {
 		if (sPosicion != null) {
 			atributoPosicion = sPosicion;
 		} else {
-			throw new NullPointerException("Mensaje error: Deberías de haber introducido una posición.");
+			throw new NullPointerException("Mensaje error: Deberías de haber introducido una posición válida");
 		}
+	}
+
+	
+	public void mover(Direccion parametroDireccion, int pasos) throws OperationNotSupportedException {
+		if (pasos < 0) {
+			throw new IllegalArgumentException(
+					"Mensaje error: Supongo que querrás retroceder, para ello debes de fijarte en la dirección y no dar un paso negativo campeón.");
+		}
+		if (parametroDireccion == null) {
+			throw new NullPointerException(
+					"Mensaje error: No puedes dar un paso sin haber elegido una dirección.");
+		}
+	
+			switch(parametroDireccion) {
+				case ARRIBA: 
+					try {
+					if (atributoColor==Color.BLANCO) {
+						setPosicion(new Posicion(atributoPosicion.getFila()+pasos, (char)atributoPosicion.getColumna()));	
+					} else {
+						setPosicion(new Posicion(atributoPosicion.getFila()-pasos, (char)atributoPosicion.getColumna()));
+					}
+					} catch (IllegalArgumentException e) {
+						throw new OperationNotSupportedException("Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
+					}
+					break;
+					
+				case IZQUIERDA:
+					
+					try {
+					if (atributoColor==Color.BLANCO) {
+						setPosicion(new Posicion(atributoPosicion.getFila(), (char)(atributoPosicion.getColumna()-pasos)));
+					} else {
+						setPosicion(new Posicion(atributoPosicion.getFila()+pasos, (char)(atributoPosicion.getColumna()+pasos)));
+					}
+					} catch (IllegalArgumentException e) {
+						throw new OperationNotSupportedException("Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
+					}
+					break;
+				
+				case DERECHA:
+					try {
+					if (atributoColor==Color.BLANCO) {
+						setPosicion(new Posicion(atributoPosicion.getFila(), (char) (atributoPosicion.getColumna()+pasos)));
+					} else {
+						setPosicion(new Posicion(atributoPosicion.getFila(), (char) (atributoPosicion.getColumna()-pasos)));
+					}
+					} catch (IllegalArgumentException e) {
+						throw new OperationNotSupportedException("Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
+					}
+					break;
+					
+				case ABAJO:
+					try {
+					if (atributoColor==Color.BLANCO) {
+						setPosicion(new Posicion(atributoPosicion.getFila()-pasos, atributoPosicion.getColumna()));
+					} else {
+						setPosicion(new Posicion(atributoPosicion.getFila()+pasos, atributoPosicion.getColumna()));
+					}
+					} catch (IllegalArgumentException e) {
+						throw new OperationNotSupportedException("Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
+					}
+				break;
+			}
+				
 	}
 
 }
