@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.torreajedrez;
 
+import java.util.Objects;
+
 import javax.naming.OperationNotSupportedException;
 
 public class Torre {
@@ -168,5 +170,22 @@ public class Torre {
 		}
 
 	}
+
+	public int hashCode() {
+		return Objects.hash(atributoColor, atributoPosicion);
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Torre other = (Torre) obj;
+		return atributoColor == other.atributoColor && Objects.equals(atributoPosicion, other.atributoPosicion);
+	}
+	
+	
 
 }
