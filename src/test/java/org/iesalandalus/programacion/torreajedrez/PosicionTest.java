@@ -7,20 +7,26 @@ import static org.junit.Assert.fail;
 
 import org.iesalandalus.programacion.torreajedrez.Posicion;
 import org.junit.Test;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+
+import org.iesalandalus.programacion.torreajedrez.Posicion;
+import org.junit.Test;
 
 public class PosicionTest {
 
 	private static final String COLUMNA_NO_ESPERADA = "La columna devuelta no es la misma que la pasada al constructor.";
 	private static final String FILA_NO_ESPERADA = "La fila devuelta no es la misma que la pasada al constructor.";
-	private static final String EXCEPCION_FILA_INCORRECTA = "Deber铆a haber saltado una excepci贸n indicando que la fila es incorrecta";
-	private static final String EXCEPCION_NO_CORRECTA = "El mensaje devuelto por la excepci贸n no es correcto.";
-	private static final String ERROR_FILA_NO_VALIDA = "ERROR: Fila no v谩lida.";
-	private static final String OBJETO_DEBERIA_SER_NULL = "No se deber铆a haber creado el objeto posici贸n.";
-	private static final String ERROR_COLUMNA_NO_VALIDA = "ERROR: Columna no v谩lida.";
-	private static final String EXCEPCION_COLUMNA_INCORRECTA = "Deber铆a haber saltado una excepci贸n indicando que la columna es incorrecta";
-	private static final String POSICION_NO_ESPERADA = "La posici贸n copiada deber铆a ser la misma que la pasada como par谩metro.";
-	private static final String EXCEPCION_POSICION_NULA = "Deber铆a haber saltado una excepci贸n indicando que no se puede copiar una posici贸n nula.";
-	private static final String ERROR_COPIAR_POSICION_NULA = "ERROR: No es posible copiar una posici贸n nula.";	
+	private static final String EXCEPCION_FILA_INCORRECTA = "Deber韆 haber saltado una excepci髇 indicando que la fila es incorrecta";
+	private static final String EXCEPCION_NO_CORRECTA = "El mensaje devuelto por la excepci髇 no es correcto.";
+	private static final String ERROR_FILA_NO_VALIDA = "ERROR: Fila no v醠ida.";
+	private static final String OBJETO_DEBERIA_SER_NULL = "No se deber韆 haber creado el objeto posici髇.";
+	private static final String ERROR_COLUMNA_NO_VALIDA = "ERROR: Columna no v醠ida.";
+	private static final String EXCEPCION_COLUMNA_INCORRECTA = "Deber韆 haber saltado una excepci髇 indicando que la columna es incorrecta";
+	private static final String POSICION_NO_ESPERADA = "La posici髇 copiada deber韆 ser la misma que la pasada como par醡etro.";
+	private static final String EXCEPCION_POSICION_NULA = "Deber韆 haber saltado una excepci髇 indicando que no se puede copiar una posici髇 nula.";
+	private static final String ERROR_COPIAR_POSICION_NULA = "ERROR: No es posible copiar una posici髇 nula.";	
 	private static final String CADENA_NO_ESPERADA = "La cadena devuelta no es la esperada.";	
 
 	@Test
