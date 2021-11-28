@@ -2,8 +2,10 @@ package org.iesalandalus.programacion.torreajedrez;
 
 public class MainApp {
 
-	public static void main(String[] args) {
-		System.out.println("kk");
-	}
+	private static Torre atributoTorre;
 
+	private static void mostrarTorre() {
+		System.out.println(atributoTorre);
+
+	}
 }
