@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.apache.commons.math3.exception.NullArgumentException;
+
 public class Torre {
 
 	// Declaración de atributos de clase como privados
@@ -17,11 +19,16 @@ public class Torre {
 	}
 
 	public Torre(Color parametroColor) {
-		if (parametroColor == Color.BLANCO) {
-			atributoPosicion = new Posicion(1, 'h');
-		}
-		if (parametroColor == Color.NEGRO) {
-			atributoPosicion = new Posicion(8, 'h');
+		if (parametroColor!=null) {		
+			if (parametroColor == Color.BLANCO) {
+				atributoPosicion = new Posicion(1, 'h');
+			}
+			if (parametroColor == Color.NEGRO) {
+				atributoPosicion = new Posicion(8, 'h');
+			}
+			this.atributoColor=parametroColor;
+		} else {
+			throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
 		}
 	}
 
@@ -35,7 +42,7 @@ public class Torre {
 				atributoPosicion = new Posicion(8, colInicial);
 			}
 		} else {
-			throw new IllegalArgumentException("Mensaje error: Deberías de haber introducido a ó h");
+			throw new IllegalArgumentException("ERROR: Columna no válida.");
 		}
 	}
 
@@ -57,7 +64,7 @@ public class Torre {
 		if (sColor != null) {
 			atributoColor = sColor;
 		} else {
-			throw new NullPointerException("Mensaje error: Deberías de haber introducido un color válido.");
+			throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
 		}
 
 	}
@@ -68,12 +75,12 @@ public class Torre {
 
 	// Métodos de miviemento
 	public void mover(Direccion parametroDireccion, int pasos) throws OperationNotSupportedException {
-		if (pasos < 0) {
+		if (pasos <= 0) {
 			throw new IllegalArgumentException(
-					"Mensaje error: Supongo que querrás retroceder, para ello debes de fijarte en la dirección y no dar un paso negativo campeón.");
+					"ERROR: El número de pasos debe ser positivo.");
 		}
 		if (parametroDireccion == null) {
-			throw new NullPointerException("Mensaje error: No puedes dar un paso sin haber elegido una dirección.");
+			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
 		}
 
 		switch (parametroDireccion) {
@@ -86,7 +93,7 @@ public class Torre {
 				}
 			} catch (IllegalArgumentException e) {
 				throw new OperationNotSupportedException(
-						"Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
+						"ERROR: Movimiento no válido (se sale del tablero).");
 			}
 			break;
 
@@ -97,12 +104,12 @@ public class Torre {
 					setPosicion(
 							new Posicion(atributoPosicion.getFila(), (char) (atributoPosicion.getColumna() - pasos)));
 				} else {
-					setPosicion(new Posicion(atributoPosicion.getFila() + pasos,
+					setPosicion(new Posicion(atributoPosicion.getFila(),
 							(char) (atributoPosicion.getColumna() + pasos)));
 				}
 			} catch (IllegalArgumentException e) {
 				throw new OperationNotSupportedException(
-						"Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
+						"ERROR: Movimiento no válido (se sale del tablero).");
 			}
 			break;
 
@@ -117,7 +124,7 @@ public class Torre {
 				}
 			} catch (IllegalArgumentException e) {
 				throw new OperationNotSupportedException(
-						"Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
+						"ERROR: Movimiento no válido (se sale del tablero).");
 			}
 			break;
 
@@ -130,7 +137,7 @@ public class Torre {
 				}
 			} catch (IllegalArgumentException e) {
 				throw new OperationNotSupportedException(
-						"Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
+						"ERROR: Movimiento no válido (se sale del tablero).");
 			}
 			break;
 		default:
@@ -138,34 +145,48 @@ public class Torre {
 
 	}
 
-	public void enrocar(Direccion parametroDireccion) {
+	public void enrocar(Direccion parametroDireccion) throws OperationNotSupportedException {
+		if (parametroDireccion==null) {
+			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
+		}
 		switch (parametroDireccion) {
 
 		case ENROQUE_CORTO:
 			if (atributoColor == Color.BLANCO) {
-				if (atributoPosicion.getFila() == 1 || atributoPosicion.getColumna() == 'h') {
-					setPosicion(new Posicion(1, 'f'));
+				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'h') {
+					setPosicion(new Posicion(1, 'a'));
 
+				} else {
+					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
 				}
 			}
+			
 			if (atributoColor == Color.NEGRO) {
-				if (atributoPosicion.getFila() == 8 || atributoPosicion.getColumna() == 'h') {
+				if (atributoPosicion.getFila() == 8 && atributoPosicion.getColumna() == 'h') {
 					setPosicion(new Posicion(8, 'f'));
+				} else {
+					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
 				}
+				
 			}
 			break;
 
 		case ENROQUE_LARGO:
 			if (atributoColor == Color.BLANCO) {
-				if (atributoPosicion.getFila() == 1 || atributoPosicion.getColumna() == 'a') {
+				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'a') {
 					setPosicion(new Posicion(1, 'd'));
+				} else {
+					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
 				}
-			}
+			} 
+			
 			if (atributoColor == Color.NEGRO) {
-				if (atributoPosicion.getFila() == 8 || atributoPosicion.getColumna() == 'a') {
+				if (atributoPosicion.getFila() == 8 && atributoPosicion.getColumna() == 'a') {
 					setPosicion(new Posicion(8, 'd'));
-				}
-			}
+				} else {
+					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
+				} 
+			} 
 			break;
 		default:
 		}
@@ -189,7 +210,7 @@ public class Torre {
 	}
 
 	public String toString() {
-		return "Color seleccionado: " + atributoColor + "   Posición seleccionada: " + atributoPosicion;
+		return "fila="+atributoPosicion.getFila()+", columna="+atributoPosicion.getColumna()+", color="+atributoColor;
 	}
 
 }
