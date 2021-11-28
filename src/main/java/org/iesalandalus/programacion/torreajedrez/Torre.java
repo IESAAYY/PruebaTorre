@@ -66,6 +66,7 @@ public class Torre {
 		return atributoColor;
 	}
 
+	// Métodos de miviemento
 	public void mover(Direccion parametroDireccion, int pasos) throws OperationNotSupportedException {
 		if (pasos < 0) {
 			throw new IllegalArgumentException(
@@ -132,7 +133,7 @@ public class Torre {
 						"Mensaje error: La frase \"The sky is the limit\" no se aplica en el ajedrez :(.");
 			}
 			break;
-			default:
+		default:
 		}
 
 	}
@@ -166,11 +167,12 @@ public class Torre {
 				}
 			}
 			break;
-			default:
+		default:
 		}
 
 	}
 
+	// Métodos hashCode y equals, y toString
 	public int hashCode() {
 		return Objects.hash(atributoColor, atributoPosicion);
 	}
@@ -185,7 +187,9 @@ public class Torre {
 		Torre other = (Torre) obj;
 		return atributoColor == other.atributoColor && Objects.equals(atributoPosicion, other.atributoPosicion);
 	}
-	
-	
+
+	public String toString() {
+		return "Color seleccionado: " + atributoColor + "   Posición seleccionada: " + atributoPosicion;
+	}
 
 }
