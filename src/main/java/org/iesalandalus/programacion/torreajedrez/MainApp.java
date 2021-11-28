@@ -1,13 +1,11 @@
 package org.iesalandalus.programacion.torreajedrez;
 
+import org.iesalandalus.programacion.utilidades.Entrada;
+
 public class MainApp {
 
 	private static Torre atributoTorre;
 	
-	public static void main(String[] args) {
-		mostrarMenu();
-	}
-
 	private static void mostrarTorre () {
 		System.out.println(atributoTorre);
 		
@@ -23,5 +21,19 @@ public class MainApp {
 		System.out.println("5.- Mover la torre creada.");
 		System.out.println("6.- Mostrar la Torre.\n");
 		System.out.println("0.- Salir del programa.");
+	}
+	
+	private static int elegirOpcion() {
+		int opcion=Entrada.entero();
+		
+		System.out.print("Introduce la opción a realizar (0-6): ");
+		opcion=Entrada.entero();
+		while (opcion<1 || opcion >6) {
+			opcion=Entrada.entero();
+			System.out.println("Porfavor, vuelva a introducir la opción y deje de jugar conmigo");
+	
+		}
+	
+		return opcion;
 	}
 }
