@@ -74,6 +74,54 @@ public class Torre {
 	}
 
 	// Métodos de miviemento
+	public void enrocar(Direccion parametroDireccion) throws OperationNotSupportedException {
+		if (parametroDireccion==null) {
+			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
+		}
+		switch (parametroDireccion) {
+
+		case ENROQUE_CORTO:
+			if (atributoColor == Color.BLANCO) {
+				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'h') {
+					setPosicion(new Posicion(1, 'a'));
+
+				} else {
+					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
+				}
+			}
+			
+			if (atributoColor == Color.NEGRO) {
+				if (atributoPosicion.getFila() == 8 && atributoPosicion.getColumna() == 'h') {
+					setPosicion(new Posicion(8, 'f'));
+				} else {
+					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
+				}
+				
+			}
+			break;
+
+		case ENROQUE_LARGO:
+			if (atributoColor == Color.BLANCO) {
+				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'a') {
+					setPosicion(new Posicion(1, 'd'));
+				} else {
+					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
+				}
+			} 
+			
+			if (atributoColor == Color.NEGRO) {
+				if (atributoPosicion.getFila() == 8 && atributoPosicion.getColumna() == 'a') {
+					setPosicion(new Posicion(8, 'd'));
+				} else {
+					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
+				} 
+			} 
+			break;
+		default:
+		}
+
+	}
+	
 	public void mover(Direccion parametroDireccion, int pasos) throws OperationNotSupportedException {
 		if (pasos <= 0) {
 			throw new IllegalArgumentException(
@@ -139,54 +187,6 @@ public class Torre {
 				throw new OperationNotSupportedException(
 						"ERROR: Movimiento no válido (se sale del tablero).");
 			}
-			break;
-		default:
-		}
-
-	}
-
-	public void enrocar(Direccion parametroDireccion) throws OperationNotSupportedException {
-		if (parametroDireccion==null) {
-			throw new NullPointerException("ERROR: La dirección no puede ser nula.");
-		}
-		switch (parametroDireccion) {
-
-		case ENROQUE_CORTO:
-			if (atributoColor == Color.BLANCO) {
-				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'h') {
-					setPosicion(new Posicion(1, 'a'));
-
-				} else {
-					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
-				}
-			}
-			
-			if (atributoColor == Color.NEGRO) {
-				if (atributoPosicion.getFila() == 8 && atributoPosicion.getColumna() == 'h') {
-					setPosicion(new Posicion(8, 'f'));
-				} else {
-					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
-				}
-				
-			}
-			break;
-
-		case ENROQUE_LARGO:
-			if (atributoColor == Color.BLANCO) {
-				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'a') {
-					setPosicion(new Posicion(1, 'd'));
-				} else {
-					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
-				}
-			} 
-			
-			if (atributoColor == Color.NEGRO) {
-				if (atributoPosicion.getFila() == 8 && atributoPosicion.getColumna() == 'a') {
-					setPosicion(new Posicion(8, 'd'));
-				} else {
-					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
-				} 
-			} 
 			break;
 		default:
 		}
