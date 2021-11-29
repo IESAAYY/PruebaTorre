@@ -8,11 +8,11 @@ public class MainApp {
 	
 	private static void mostrarTorre () {
 		System.out.println(atributoTorre);
-		
-		
+			
 	}
 	
 	private static void mostrarMenu () {
+		System.out.println("\n--------------------------------------------------------------");
 		System.out.println("Programa para controlar el movimiento de una torre en Ajedrez.");
 		System.out.println("--------------------------------------------------------------\n");
 		System.out.println("1.- Crear una torre negra en h1");
@@ -24,16 +24,56 @@ public class MainApp {
 	}
 	
 	private static int elegirOpcion() {
-		int opcion=Entrada.entero();
+		int opcion;
 		
-		System.out.print("Introduce la opción a realizar (0-6): ");
+		System.out.print("\nIntroduce la opción a realizar (0-6): ");
 		opcion=Entrada.entero();
-		while (opcion<1 || opcion >6) {
+		
+		if (opcion==0) {
+			System.out.print("Introduzca 0 de nuevo para finalizar el programa, cualquier otro número para mostrar el menú: ");
 			opcion=Entrada.entero();
-			System.out.println("Porfavor, vuelva a introducir la opción y deje de jugar conmigo");
-	
 		}
-	
+		if (opcion==0) {
+			System.out.println("\n--------------------------------El programa finalizó con éxito.--------------------------------");
+			System.exit(0);
+		} else {
+			mostrarMenu();
+			elegirOpcion();
+		}
+		while (opcion<0 || opcion >6) {
+			System.out.print("Porfavor, vuelva a introducir la opción y deje de jugar conmigo: ");
+			opcion=Entrada.entero();
+			
+		}
 		return opcion;
 	}
+	
+	private static Color  elegirColor() {
+		char color;
+		
+		System.out.print("Es momento de elegir el color, introduce \"B\" para seleccionar blanco y \"N\" para seleccionar negro: ");
+		color=Entrada.caracter();
+		
+		while (color != 'B' && color != 'b' && color != 'N' && color != 'n') {
+			System.out.print("Porfavor, vuelva a introducir el color y deje de jugar conmigo: ");
+			color=Entrada.caracter();
+		}
+		
+		if (color=='B' || color=='b') {
+			return Color.BLANCO;
+		} else {
+			return Color.NEGRO;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
