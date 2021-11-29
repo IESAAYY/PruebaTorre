@@ -97,6 +97,20 @@ public class MainApp {
 				
 	}
 	
+	private static int elegirDireccion() {
+		int opcion;
+		
+		System.out.print("Elige una dirección para mover tu torre(1-6): ");	
+		opcion=Entrada.entero();
+		
+		while (opcion<1 || opcion>6) {
+			System.out.print("Porfavor, vuelva a introducir la opción y deje de jugar conmigo: ");
+			opcion=Entrada.entero();
+		}
+		
+		return opcion;
+	}
+	
 	
 	
 	
