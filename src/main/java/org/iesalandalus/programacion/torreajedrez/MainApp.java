@@ -115,6 +115,10 @@ public class MainApp {
 		atributoTorre=new Torre();
 	}
 	
+	private static void crearTorreColor() {
+		Color atributoColor=elegirColor();
+		atributoTorre = new Torre(atributoColor);
+	}
 	
 	
 	
