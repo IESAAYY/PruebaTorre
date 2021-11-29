@@ -23,9 +23,9 @@ public class MainApp {
 		System.out.println("--------------------------------------------------------------\n");
 		System.out.println("1.- Crear una torre negra en h1");
 		System.out.println("2.- Crear una torre en columna h seleccionando el color ");
-		System.out.println("4.- Crear una torre seleccionando el color y la columna.");
-		System.out.println("5.- Mover la torre creada.");
-		System.out.println("6.- Mostrar la Torre.\n");
+		System.out.println("3.- Crear una torre seleccionando el color y la columna.");
+		System.out.println("4.- Mover la torre creada.");
+		System.out.println("5.- Mostrar la Torre.\n");
 		System.out.println("0.- Salir del programa.");
 	}
 	
@@ -46,7 +46,7 @@ public class MainApp {
 			mostrarMenu();
 			elegirOpcion();
 		}
-		while (opcion<0 || opcion >6) {
+		while (opcion<0 || opcion >5) {
 			System.out.print("Porfavor, vuelva a introducir la opción y deje de jugar conmigo: ");
 			opcion=Entrada.entero();
 			
@@ -140,6 +140,7 @@ public class MainApp {
 		 case 1:
 			 atributoDireccion=Direccion.ENROQUE_CORTO;
 			 break;
+			 
 		 case 2:
 			 atributoDireccion =Direccion.ENROQUE_LARGO;
 			 break;
@@ -149,7 +150,7 @@ public class MainApp {
 			 break;
 			 
 		 case 4:
-			 atributoDireccion=Direccion.IZQUIERDA;
+				atributoDireccion = Direccion.IZQUIERDA;
 			 break;
 			 
 		 case 5:
@@ -166,9 +167,31 @@ public class MainApp {
 		 atributoTorre.mover(atributoDireccion, pasos);
 	}
 	
-	
-	
-	
+	private static void ejecutarOpcion(int opcion) throws OperationNotSupportedException {	
+		switch (opcion) {
+		case 1:
+			crearTorreDefecto();
+			break;
+			
+		case 2:
+			crearTorreColor();
+			break;
+			
+		case 3:
+			crearTorreColorColumna();
+			break;
+			
+		case 4 :
+			mover();
+			break;
+			
+		case 5:
+			mostrarTorre();
+			break;
+			
+		}
+	}
+
 	
 	
 	
