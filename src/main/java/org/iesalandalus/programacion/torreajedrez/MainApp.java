@@ -111,6 +111,10 @@ public class MainApp {
 		return opcion;
 	}
 	
+	private static void crearTorreDefecto() {
+		atributoTorre=new Torre();
+	}
+	
 	
 	
 	
