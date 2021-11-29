@@ -117,8 +117,17 @@ public class MainApp {
 	
 	private static void crearTorreColor() {
 		Color atributoColor=elegirColor();
+		
 		atributoTorre = new Torre(atributoColor);
 	}
+	
+	private static void crearTorreColorColumna() {
+		Color atributoColor=elegirColor();
+		char columna=elegirColumnaInicial();
+		
+		atributoTorre=new Torre(atributoColor, columna);
+	}
+	
 	
 	
 	
