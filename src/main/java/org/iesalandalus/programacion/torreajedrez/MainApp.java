@@ -66,6 +66,19 @@ public class MainApp {
 		}
 	}
 	
+	private static char elegirColumnaInicial() {
+		char columnaInicial;
+		
+		System.out.print("Ahora debes de elegir una columna inicial para tu torre, introduce a ó h ");
+		columnaInicial=Entrada.caracter();
+		
+		while (columnaInicial!= 'A' && columnaInicial!='a' && columnaInicial!= 'H' && columnaInicial!='h' ) {
+			System.out.print("Porfavor, vuelva a introducir la columna inicial y deje de jugar conmigo: ");
+			columnaInicial=Entrada.caracter();
+		}
+		
+		return columnaInicial;
+	}	
 	
 	
 	
