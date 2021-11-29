@@ -6,6 +6,10 @@ public class MainApp {
 
 	private static Torre atributoTorre;
 	
+	public static void main(String[] args) {
+		mostrarMenuDirecciones();
+
+	}
 	private static void mostrarTorre () {
 		System.out.println(atributoTorre);
 			
@@ -79,6 +83,19 @@ public class MainApp {
 		
 		return columnaInicial;
 	}	
+	
+	private static void mostrarMenuDirecciones() {
+		System.out.println("\n-----------------------------------------------");
+		System.out.println("¿Qué movimiento deseas realizar con tu torre?");
+		System.out.println("-----------------------------------------------");
+		System.out.println("1.- Enroque corto");
+		System.out.println("2.- Enroque largo");
+		System.out.println("3.- Arriba");
+		System.out.println("4.- Izquierda");
+		System.out.println("5.- Derecha");
+		System.out.println("6.- Abajo");
+				
+	}
 	
 	
 	
