@@ -4,45 +4,42 @@ import java.util.Objects;
 
 public class Posicion {
 
-	// Declaración de variable privates
+	// Declaraciï¿½n de atributos privados de clase
 	private int fila;
 	private char columna;
 
-	
-	
-	//Constructor
+	// Constructores
 	public Posicion(int fila, char columna) {
 		setFila(fila);
 		setColumna(columna);
 	}
 
-	//Constructor copia
-	public Posicion(Posicion Posicion) {
-		this.fila = Posicion.getFila();
-		this.columna = Posicion.getColumna();
+	public Posicion(Posicion parametroPosicion) {
+		if (parametroPosicion!=null) {
+			this.fila = parametroPosicion.getFila();
+			this.columna = parametroPosicion.getColumna();
+		} else {
+		 throw new NullPointerException("ERROR: No es posible copiar una posiciÃ³n nula.");
+		}
 	}
 
-	// Métodos get y set para fila y columna con excepciones indicadas por el
-		// enunciado en sus respectivos lugares
-		public int getFila() {
-			return fila;
-		}
-	
+	// Mï¿½todos set y get para fila y columna con excepciones indicadas por el
+	// enunciado en sus respectivos lugares
 	private void setFila(int fila) {
 		if (fila < 1 || fila > 8) {
-			throw new IllegalArgumentException("Mensaje error: Debe ser entero entre 1 y 8");
+			throw new IllegalArgumentException("ERROR: Fila no vÃ¡lida.");
 		} else {
 			this.fila = fila;
 		}
 	}
 
-	public char getColumna() {
-		return columna;
+	public int getFila() {
+		return fila;
 	}
 
 	private void setColumna(char columna) {
 		if (columna < 'a' || columna > 'h') {
-			throw new IllegalArgumentException("Mensaje rror: Deber ser del alfabeto entre a y h");
+			throw new IllegalArgumentException("ERROR: Columna no vÃ¡lida.");
 
 		} else {
 
@@ -50,12 +47,15 @@ public class Posicion {
 		}
 	}
 
-	//Métodos hashCode y equals
+	public char getColumna() {
+		return columna;
+	}
+
+	// Mï¿½todos hashCode y equals
 	public int hashCode() {
 		return Objects.hash(columna, fila);
 	}
 
-	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -66,9 +66,9 @@ public class Posicion {
 		Posicion other = (Posicion) obj;
 		return columna == other.columna && fila == other.fila;
 	}
-	
-	//Método toString 
+
+	// Mï¿½todo toString
 	public String toString() {
-		return "Fila seleccionada: "+fila+"   Columna seleccionada: "+columna;
+		return "fila=" + fila + ", columna=" + columna;
 	}
 }
