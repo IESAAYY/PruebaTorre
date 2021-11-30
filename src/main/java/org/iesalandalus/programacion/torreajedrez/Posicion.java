@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Posicion {
 
-	// Declaraci�n de atributos privados de clase
+	// Declaración de atributos privados de clase
 	private int fila;
 	private char columna;
 
@@ -23,7 +23,7 @@ public class Posicion {
 		}
 	}
 
-	// M�todos set y get para fila y columna con excepciones indicadas por el
+	// Métodos set y get para fila y columna con excepciones indicadas por el
 	// enunciado en sus respectivos lugares
 	private void setFila(int fila) {
 		if (fila < 1 || fila > 8) {
@@ -51,7 +51,7 @@ public class Posicion {
 		return columna;
 	}
 
-	// M�todos hashCode y equals
+	// Métodos hashCode y equals
 	public int hashCode() {
 		return Objects.hash(columna, fila);
 	}
@@ -67,7 +67,7 @@ public class Posicion {
 		return columna == other.columna && fila == other.fila;
 	}
 
-	// M�todo toString
+	// Método toString
 	public String toString() {
 		return "fila=" + fila + ", columna=" + columna;
 	}
