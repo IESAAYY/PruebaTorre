@@ -26,10 +26,12 @@ public class Torre {
 			if (parametroColor == Color.NEGRO) {
 				atributoPosicion = new Posicion(8, 'h');
 			}
+		
 			this.atributoColor=parametroColor;
 		} else {
 			throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
 		}
+		
 	}
 
 	public Torre(Color parametroColor, char colInicial) {
@@ -83,7 +85,7 @@ public class Torre {
 		case ENROQUE_CORTO:
 			if (atributoColor == Color.BLANCO) {
 				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'h') {
-					setPosicion(new Posicion(1, 'a'));
+					setPosicion(new Posicion(1, 'f'));
 
 				} else {
 					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
