@@ -14,10 +14,10 @@ public class Posicion {
 		setColumna(columna);
 	}
 
-	public Posicion(Posicion parametroPosicion) {
-		if (parametroPosicion!=null) {
-			this.fila = parametroPosicion.getFila();
-			this.columna = parametroPosicion.getColumna();
+	public Posicion(Posicion p) {
+		if (p!=null) {
+			this.fila = p.getFila();
+			this.columna = p.getColumna();
 		} else {
 		 throw new NullPointerException("ERROR: No es posible copiar una posición nula.");
 		}

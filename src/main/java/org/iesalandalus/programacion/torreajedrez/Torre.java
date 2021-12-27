@@ -8,26 +8,25 @@ import org.apache.commons.math3.exception.NullArgumentException;
 
 public class Torre {
 
-	// Declaración de atributos de clase como privados
-	private Color atributoColor;
-	private Posicion atributoPosicion;
+	private Color color;
+	private Posicion posicion;
 
 	// Constructores
 	public Torre() {
-		atributoColor = Color.NEGRO;
-		atributoPosicion = new Posicion(8, 'h');
+		color = Color.NEGRO;
+		posicion = new Posicion(8, 'h');
 	}
 
 	public Torre(Color parametroColor) {
 		if (parametroColor!=null) {		
 			if (parametroColor == Color.BLANCO) {
-				atributoPosicion = new Posicion(1, 'h');
+				posicion = new Posicion(1, 'h');
 			}
 			if (parametroColor == Color.NEGRO) {
-				atributoPosicion = new Posicion(8, 'h');
+				posicion = new Posicion(8, 'h');
 			}
 		
-			this.atributoColor=parametroColor;
+			this.color=parametroColor;
 		} else {
 			throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
 		}
@@ -39,9 +38,9 @@ public class Torre {
 
 		if (colInicial == 'a' || colInicial == 'h') {
 			if (parametroColor == Color.BLANCO) {
-				atributoPosicion = new Posicion(1, colInicial);
+				posicion = new Posicion(1, colInicial);
 			} else {
-				atributoPosicion = new Posicion(8, colInicial);
+				posicion = new Posicion(8, colInicial);
 			}
 		} else {
 			throw new IllegalArgumentException("ERROR: Columna no válida.");
@@ -50,21 +49,21 @@ public class Torre {
 
 	// Métrodos set y get
 
-	private void setPosicion(Posicion sPosicion) {
-		if (sPosicion != null) {
-			atributoPosicion = sPosicion;
+	private void setPosicion(Posicion posicion) {
+		if (posicion != null) {
+			this.posicion = posicion;
 		} else {
 			throw new NullPointerException("Mensaje error: Deberías de haber introducido una posición válida");
 		}
 	}
 
 	public Posicion getPosicion() {
-		return atributoPosicion;
+		return posicion;
 	}
 
 	private void setColor(Color sColor) {
 		if (sColor != null) {
-			atributoColor = sColor;
+			color = sColor;
 		} else {
 			throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
 		}
@@ -72,7 +71,7 @@ public class Torre {
 	}
 
 	public Color getColor() {
-		return atributoColor;
+		return color;
 	}
 
 	// Métodos de miviemento
@@ -83,8 +82,8 @@ public class Torre {
 		switch (parametroDireccion) {
 
 		case ENROQUE_CORTO:
-			if (atributoColor == Color.BLANCO) {
-				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'h') {
+			if (color == Color.BLANCO) {
+				if (posicion.getFila() == 1 && posicion.getColumna() == 'h') {
 					setPosicion(new Posicion(1, 'f'));
 
 				} else {
@@ -92,8 +91,8 @@ public class Torre {
 				}
 			}
 			
-			if (atributoColor == Color.NEGRO) {
-				if (atributoPosicion.getFila() == 8 && atributoPosicion.getColumna() == 'h') {
+			if (color == Color.NEGRO) {
+				if (posicion.getFila() == 8 && posicion.getColumna() == 'h') {
 					setPosicion(new Posicion(8, 'f'));
 				} else {
 					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
@@ -103,16 +102,16 @@ public class Torre {
 			break;
 
 		case ENROQUE_LARGO:
-			if (atributoColor == Color.BLANCO) {
-				if (atributoPosicion.getFila() == 1 && atributoPosicion.getColumna() == 'a') {
+			if (color == Color.BLANCO) {
+				if (posicion.getFila() == 1 && posicion.getColumna() == 'a') {
 					setPosicion(new Posicion(1, 'd'));
 				} else {
 					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
 				}
 			} 
 			
-			if (atributoColor == Color.NEGRO) {
-				if (atributoPosicion.getFila() == 8 && atributoPosicion.getColumna() == 'a') {
+			if (color == Color.NEGRO) {
+				if (posicion.getFila() == 8 && posicion.getColumna() == 'a') {
 					setPosicion(new Posicion(8, 'd'));
 				} else {
 					throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
@@ -136,10 +135,10 @@ public class Torre {
 		switch (parametroDireccion) {
 		case ARRIBA:
 			try {
-				if (atributoColor == Color.BLANCO) {
-					setPosicion(new Posicion(atributoPosicion.getFila() + pasos, (char) atributoPosicion.getColumna()));
+				if (color == Color.BLANCO) {
+					setPosicion(new Posicion(posicion.getFila() + pasos, (char) posicion.getColumna()));
 				} else {
-					setPosicion(new Posicion(atributoPosicion.getFila() - pasos, (char) atributoPosicion.getColumna()));
+					setPosicion(new Posicion(posicion.getFila() - pasos, (char) posicion.getColumna()));
 				}
 			} catch (IllegalArgumentException e) {
 				throw new OperationNotSupportedException(
@@ -150,12 +149,12 @@ public class Torre {
 		case IZQUIERDA:
 
 			try {
-				if (atributoColor == Color.BLANCO) {
+				if (color == Color.BLANCO) {
 					setPosicion(
-							new Posicion(atributoPosicion.getFila(), (char) (atributoPosicion.getColumna() - pasos)));
+							new Posicion(posicion.getFila(), (char) (posicion.getColumna() - pasos)));
 				} else {
-					setPosicion(new Posicion(atributoPosicion.getFila(),
-							(char) (atributoPosicion.getColumna() + pasos)));
+					setPosicion(new Posicion(posicion.getFila(),
+							(char) (posicion.getColumna() + pasos)));
 				}
 			} catch (IllegalArgumentException e) {
 				throw new OperationNotSupportedException(
@@ -165,12 +164,12 @@ public class Torre {
 
 		case DERECHA:
 			try {
-				if (atributoColor == Color.BLANCO) {
+				if (color == Color.BLANCO) {
 					setPosicion(
-							new Posicion(atributoPosicion.getFila(), (char) (atributoPosicion.getColumna() + pasos)));
+							new Posicion(posicion.getFila(), (char) (posicion.getColumna() + pasos)));
 				} else {
 					setPosicion(
-							new Posicion(atributoPosicion.getFila(), (char) (atributoPosicion.getColumna() - pasos)));
+							new Posicion(posicion.getFila(), (char) (posicion.getColumna() - pasos)));
 				}
 			} catch (IllegalArgumentException e) {
 				throw new OperationNotSupportedException(
@@ -180,10 +179,10 @@ public class Torre {
 
 		case ABAJO:
 			try {
-				if (atributoColor == Color.BLANCO) {
-					setPosicion(new Posicion(atributoPosicion.getFila() - pasos, atributoPosicion.getColumna()));
+				if (color == Color.BLANCO) {
+					setPosicion(new Posicion(posicion.getFila() - pasos, posicion.getColumna()));
 				} else {
-					setPosicion(new Posicion(atributoPosicion.getFila() + pasos, atributoPosicion.getColumna()));
+					setPosicion(new Posicion(posicion.getFila() + pasos, posicion.getColumna()));
 				}
 			} catch (IllegalArgumentException e) {
 				throw new OperationNotSupportedException(
@@ -197,7 +196,7 @@ public class Torre {
 
 	// Métodos hashCode y equals, y toString
 	public int hashCode() {
-		return Objects.hash(atributoColor, atributoPosicion);
+		return Objects.hash(color, posicion);
 	}
 
 	public boolean equals(Object obj) {
@@ -208,11 +207,11 @@ public class Torre {
 		if (getClass() != obj.getClass())
 			return false;
 		Torre other = (Torre) obj;
-		return atributoColor == other.atributoColor && Objects.equals(atributoPosicion, other.atributoPosicion);
+		return color == other.color && Objects.equals(posicion, other.posicion);
 	}
 
 	public String toString() {
-		return "fila="+atributoPosicion.getFila()+", columna="+atributoPosicion.getColumna()+", color="+atributoColor;
+		return "fila="+posicion.getFila()+", columna="+posicion.getColumna()+", color="+color;
 	}
 
 }
